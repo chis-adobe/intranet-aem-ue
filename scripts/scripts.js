@@ -24,7 +24,6 @@ import getAudiences from './utils.js';
 // Add you plugins below
 // window.hlx.plugins.add('/plugins/my-plugin.js');
 
-
 /**
  * Gets all the metadata elements that are in the given scope.
  * @param {String} scope The scope/prefix for the metadata
@@ -52,7 +51,7 @@ const pluginContext = {
   toClassName,
 };
 
-const LCP_BLOCKS = []; // add your LCP blocks to the list
+// const LCP_BLOCKS = []; // add your LCP blocks to the list
 
 /**
  * Moves all the attributes from a given elmenet to another given element.

@@ -113,8 +113,6 @@ function sampleRUM(checkpoint, data) {
   }
 }
 
-
-
 /**
  * Sanitizes a string for use as class name.
  * @param {string} name The unsanitized string
@@ -485,8 +483,6 @@ async function fetchPlaceholders(prefix = 'default') {
   return window.placeholders[`${prefix}`];
 }
 
-
-
 /**
  * Builds a block DOM Element from a two dimensional array, string, or object
  * @param {string} blockName name of the block
@@ -794,8 +790,8 @@ function decorateBlocks(main) {
 function getEnvUrls(main) {
   return {
     author: 'https://author-p130746-e1298459.adobeaemcloud.com',
-    publish: 'https://publish-p130746-e1298459.adobeaemcloud.com'
-  }
+    publish: 'https://publish-p130746-e1298459.adobeaemcloud.com',
+  };
 }
 
 /**
