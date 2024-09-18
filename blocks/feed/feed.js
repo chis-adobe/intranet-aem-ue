@@ -9,24 +9,26 @@ export default async function decorate(block) {
   const feedDataReq = await fetch("https:/publish-p130746-e1298459.adobeaemcloud.com/content/dam/igm/tech.5.json");
 
   const feedDataJson = await feedDataReq.json();
-  let keys = Object.keys(feedDataJson);
+  const keys = Object.keys(feedDataJson);
 
   let itemsHTML = '';
-  for(let keyIndex = 0; keyIndex < keys.length; keyIndex++){
-    let key = keys[keyIndex];
 
-    if(key.startsWith("jcr:")) {
+  for (let keyIndex = 0; keyIndex < keys.length; keyIndex++){
+    const key = keys[keyIndex];
+
+    if (key.startsWith('jcr:')) {
       continue;
     }
 
-    let assetJson = feedDataJson[key];
-    let assetMetadataJson = assetJson["jcr:content"].metadata;
-    let assetDescription = assetMetadataJson["dc:description"];
+    const assetJson = feedDataJson[key];
+    const assetMetadataJson = assetJson['jcr:content'].metadata;
+    const assetDescription = assetMetadataJson['dc:description'];
+    const assetDescriptionHtml = assetDescription ? `<div class="description">${assetDescription}</div>` : ''; 
 
     itemsHTML += `
       <li>
         <img src="https://author-p130746-e1298459.adobeaemcloud.com/content/dam/igm/tech/${key}">
-        ${assetDescription ? "<div class='description'>" + assetDescription + "</div>" : ""} 
+        ${assetDescriptionHtml}
       </li>
     `
   }
