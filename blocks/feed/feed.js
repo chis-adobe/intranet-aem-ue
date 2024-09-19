@@ -4,7 +4,11 @@ export default async function decorate(block) {
   const roleFolderPairs = {};
   const firstRole = props[0].textContent.trim();
   const firstFolder = props[1].textContent.trim();
+  const secondRole = props[2].textContent.trim();
+  const secondFolder = props[3].textContent.trim();
+
   roleFolderPairs[firstRole] = firstFolder;
+  roleFolderPairs[secondRole] = secondFolder;
 
   document.querySelector('form.login-form').addEventListener("submit", (e) => {
     const role = document.getElementById('username').value;
@@ -13,7 +17,8 @@ export default async function decorate(block) {
   });
 
   async function generateFeed(role) {
-    const feedDataReq = await fetch(`https:/publish-p130746-e1298459.adobeaemcloud.com/content/dam/igm/${role}.3.json`);
+    const folder = roleFolderPairs[role];
+    const feedDataReq = await fetch(`https:/publish-p130746-e1298459.adobeaemcloud.com${folder}.3.json`);
 
     const feedDataJson = await feedDataReq.json();
     const keys = Object.keys(feedDataJson);
