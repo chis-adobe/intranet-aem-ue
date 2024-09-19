@@ -384,7 +384,6 @@
         "component": "container",
         "name": "feed",
         "label": "Feed",
-        "valueType": "string[]",
         "fields": [
           {
             "component": "text-input",
