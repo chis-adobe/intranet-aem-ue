@@ -384,7 +384,6 @@
         "component": "container",
         "name": "feed",
         "label": "Feed",
-        "multi": true,
         "valueType": "string[]",
         "fields": [
           {
