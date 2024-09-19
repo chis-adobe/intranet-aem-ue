@@ -385,7 +385,7 @@
         "name": "feed",
         "label": "Feed",
         "multi": true,
-        "valueType": "string",
+        "valueType": "string[]",
         "fields": [
           {
             "component": "text-input",
