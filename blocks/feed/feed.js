@@ -6,36 +6,46 @@ export default async function decorate(block) {
   const firstFolder = props[1].textContent.trim();
   roleFolderPairs[firstRole] = firstFolder;
 
-  const feedDataReq = await fetch('https:/publish-p130746-e1298459.adobeaemcloud.com/content/dam/igm/tech.5.json');
+  document.querySelector('form.login-form').addEventListener("submit", (e) => {
+    const role = document.getElementById('username').value;
 
-  const feedDataJson = await feedDataReq.json();
-  const keys = Object.keys(feedDataJson);
+    generateFeed(role);
+  });
 
-  let itemsHTML = '';
+  async function generateFeed(role) {
+    const feedDataReq = await fetch(`https:/publish-p130746-e1298459.adobeaemcloud.com/content/dam/igm/${role}.3.json`);
 
-  for (let keyIndex = 0; keyIndex < keys.length; keyIndex++) {
-    const key = keys[keyIndex];
+    const feedDataJson = await feedDataReq.json();
+    const keys = Object.keys(feedDataJson);
 
-    if (key.startsWith('jcr:')) {
-      continue;
+    let itemsHTML = '';
+
+    for (let keyIndex = 0; keyIndex < keys.length; keyIndex++) {
+      const key = keys[keyIndex];
+
+      if (key.startsWith('jcr:')) {
+        continue;
+      }
+
+      const assetJson = feedDataJson[key];
+      const assetMetadataJson = assetJson['jcr:content'].metadata;
+      const assetDescription = assetMetadataJson['dc:description'];
+      const assetDescriptionHtml = assetDescription ? `<div class="description">${assetDescription}</div>` : '';
+
+      itemsHTML += `
+        <li>
+          <div class="feed-item">
+            <img src="https://author-p130746-e1298459.adobeaemcloud.com/content/dam/igm/tech/${key}">
+            ${assetDescriptionHtml}
+          </div>
+        </li>
+      `;
     }
 
-    const assetJson = feedDataJson[key];
-    const assetMetadataJson = assetJson['jcr:content'].metadata;
-    const assetDescription = assetMetadataJson['dc:description'];
-    const assetDescriptionHtml = assetDescription ? `<div class="description">${assetDescription}</div>` : '';
-
-    itemsHTML += `
-      <li>
-        <img src="https://author-p130746-e1298459.adobeaemcloud.com/content/dam/igm/tech/${key}">
-        ${assetDescriptionHtml}
-      </li>
-    `;
+    block.innerHTML = `
+      <h2 class='section-heading'>Your Personalized Feed</h2>
+      <ul class="feed-list">
+        ${itemsHTML}
+      </ul>`;
   }
-
-  block.innerHTML = `
-    <h2 class='section-heading'>Your Personalized Feed</h2>
-    <ul class="feed-list">
-      ${itemsHTML}
-    </ul>`;
 }

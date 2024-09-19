@@ -2,3 +2,28 @@
     max-width: 1920px;
     background-color: #F3F2F6;
 }
+
+.section > .feed-wrapper .feed.block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section > .feed-wrapper .feed.block .feed-list {
+    display: flex;
+    max-width: 80%;
+    list-style: none;
+    padding: 0;
+    gap: 10px;
+}
+
+.section > .feed-wrapper .feed.block .feed-list li {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.section > .feed-wrapper .feed.block .feed-list li .feed-item{
+    display: flex;
+    flex-direction: column;
+}
