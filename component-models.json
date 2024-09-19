@@ -384,6 +384,7 @@
         "component": "container",
         "name": "feed",
         "label": "Feed",
+        "multi": "true",
         "fields": [
           {
             "component": "text-input",
