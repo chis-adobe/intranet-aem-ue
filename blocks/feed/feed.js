@@ -1,10 +1,10 @@
 /* eslint-disable no-underscore-dangle */
 export default async function decorate(block) {
   const users = {
-    "kchau@adobe.com": "finance",
-    "chis@adobe.com": "tech",
-    "asmith@wknd.com": "finance"
-  }
+    'kchau@adobe.com': 'finance',
+    'chis@adobe.com': 'tech',
+    'asmith@wknd.com': 'finance',
+  };
 
   const props = [...block.children];
   const roleFolderPairs = {};
@@ -15,15 +15,6 @@ export default async function decorate(block) {
 
   roleFolderPairs[firstRole] = firstFolder;
   roleFolderPairs[secondRole] = secondFolder;
-
-  document.getElementById('log-in').addEventListener('click', (e) => {
-
-    e.target.closest('form.login-form').addEventListener('submit', (e) => {
-      const user = document.getElementById('username').value;
-
-      generateFeed(user);
-    });
-  });
 
   async function generateFeed(user) {
     const role = users[user];
@@ -63,4 +54,12 @@ export default async function decorate(block) {
         ${itemsHTML}
       </ul>`;
   }
+
+  document.getElementById('log-in').addEventListener('click', (e) => {
+    e.target.closest('form.login-form').addEventListener('submit', () => {
+      const user = document.getElementById('username').value;
+
+      generateFeed(user);
+    });
+  });
 }
