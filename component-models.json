@@ -396,18 +396,6 @@
             "label": "Folder",
             "name": "folder",
             "valueType": "string"
-          },
-          {
-            "component": "text-input",
-            "label": "Role",
-            "name": "role2",
-            "valueType": "string"
-          },
-          {
-            "component": "reference",
-            "label": "Folder",
-            "name": "folder2",
-            "valueType": "string"
           }
         ]
       }
