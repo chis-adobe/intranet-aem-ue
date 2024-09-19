@@ -1,5 +1,11 @@
 /* eslint-disable no-underscore-dangle */
 export default async function decorate(block) {
+  const users = {
+    "kchau@adobe.com": "finance",
+    "chis@adobe.com": "tech",
+    "asmith@wknd.com": "finance"
+  }
+
   const props = [...block.children];
   const roleFolderPairs = {};
   const firstRole = props[0].textContent.trim();
@@ -10,13 +16,17 @@ export default async function decorate(block) {
   roleFolderPairs[firstRole] = firstFolder;
   roleFolderPairs[secondRole] = secondFolder;
 
-  document.querySelector('form.login-form').addEventListener("submit", (e) => {
-    const role = document.getElementById('username').value;
+  document.getElementById('log-in').addEventListener('click', (e) => {
 
-    generateFeed(role);
+    e.target.closest('form.login-form').addEventListener('submit', (e) => {
+      const user = document.getElementById('username').value;
+
+      generateFeed(user);
+    });
   });
 
-  async function generateFeed(role) {
+  async function generateFeed(user) {
+    const role = users[user];
     const folder = roleFolderPairs[role];
     const feedDataReq = await fetch(`https:/publish-p130746-e1298459.adobeaemcloud.com${folder}.3.json`);
 
