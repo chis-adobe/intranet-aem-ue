@@ -41,7 +41,7 @@ export default async function decorate(block) {
       itemsHTML += `
         <li>
           <div class="feed-item">
-            <img src="https://publish-p130746-e1298459.adobeaemcloud.com/content/dam/igm/${folder}/${key}">
+            <img src="https://publish-p130746-e1298459.adobeaemcloud.com${folder}/${key}">
             ${assetDescriptionHtml}
           </div>
         </li>
