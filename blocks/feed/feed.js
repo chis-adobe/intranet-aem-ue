@@ -19,7 +19,7 @@ export default async function decorate(block) {
   async function generateFeed(user) {
     const role = users[user];
     const folder = roleFolderPairs[role];
-    const feedDataReq = await fetch(`https:/publish-p130746-e1298459.adobeaemcloud.com${folder}.3.json`);
+    const feedDataReq = await fetch(`https://publish-p130746-e1298459.adobeaemcloud.com${folder}.3.json`);
 
     const feedDataJson = await feedDataReq.json();
     const keys = Object.keys(feedDataJson);
