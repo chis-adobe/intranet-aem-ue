@@ -23,7 +23,12 @@
     flex: 1;
 }
 
-.section > .feed-wrapper .feed.block .feed-list li .feed-item{
+.section > .feed-wrapper .feed.block .feed-list li .feed-item {
     display: flex;
     flex-direction: column;
+    height: 100%;
+}
+
+.section > .feed-wrapper .feed.block .feed-list li .feed-item img {
+    height: 100%;
 }
