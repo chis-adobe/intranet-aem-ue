@@ -31,4 +31,5 @@
 
 .section > .feed-wrapper .feed.block .feed-list li .feed-item img {
     height: 100%;
+    object-fit: cover;
 }
