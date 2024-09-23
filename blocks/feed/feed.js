@@ -41,12 +41,14 @@ export default async function decorate(block) {
       const assetJson = feedDataJson[key];
       const assetMetadataJson = assetJson['jcr:content'].metadata;
       const assetDescription = assetMetadataJson['dc:description'];
+      const assetCustom = assetMetadataJson['interestRate'] ?? assetMetadataJson['location'];
 
       itemsHTML += `
         <li>
           <div class="feed-item">
             <img src="https://publish-p130746-e1298459.adobeaemcloud.com${folder}/${key}">
             <div class="description">${assetDescription ?? ""}</div>
+            <div class="custom">${assetCustom ?? ""}</div>
           </div>
         </li>
       `;
