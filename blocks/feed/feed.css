@@ -14,13 +14,18 @@
     max-width: 80%;
     list-style: none;
     padding: 0;
-    gap: 10px;
 }
 
 .section > .feed-wrapper .feed.block .feed-list li {
     display: flex;
     align-items: center;
     flex: 1;
+    padding: 0 15px;
+    border-right: 1px black dotted;
+}
+
+.section > .feed-wrapper .feed.block .feed-list li:last-of-type {
+    border-right: none;
 }
 
 .section > .feed-wrapper .feed.block .feed-list li .feed-item {
