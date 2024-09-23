@@ -381,6 +381,12 @@
     "id": "feed",
     "fields": [
       {
+        "component": "reference",
+        "label": "Anonymous Content Folder",
+        "name": "anonContent",
+        "valueType": "string"
+      },
+      {
         "component": "container",
         "name": "feed",
         "label": "Feed",

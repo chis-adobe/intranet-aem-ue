@@ -8,19 +8,24 @@ export default async function decorate(block) {
 
   const props = [...block.children];
   const roleFolderPairs = {};
-  const firstRole = props[0].textContent.trim();
-  const firstFolder = props[1].textContent.trim();
-  const secondRole = props[2].textContent.trim();
-  const secondFolder = props[3].textContent.trim();
+  const anonFolder = props[0].textContent.trim();
+  const firstRole = props[1].textContent.trim();
+  const firstFolder = props[2].textContent.trim();
+  const secondRole = props[3].textContent.trim();
+  const secondFolder = props[4].textContent.trim();
 
   roleFolderPairs[firstRole] = firstFolder;
   roleFolderPairs[secondRole] = secondFolder;
 
   async function generateFeed(user) {
-    const role = users[user];
-    const folder = roleFolderPairs[role];
-    const feedDataReq = await fetch(`https://publish-p130746-e1298459.adobeaemcloud.com${folder}.3.json`);
+    let folder = anonFolder;
 
+    if (user) {
+      const role = users[user];
+      folder = roleFolderPairs[role];
+    } 
+
+    const feedDataReq = await fetch(`https://publish-p130746-e1298459.adobeaemcloud.com${folder}.3.json`);
     const feedDataJson = await feedDataReq.json();
     const keys = Object.keys(feedDataJson);
 
@@ -62,4 +67,6 @@ export default async function decorate(block) {
       generateFeed(user);
     });
   });
+
+  generateFeed();
 }
