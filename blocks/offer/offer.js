@@ -8,7 +8,7 @@ export default async function decorate(block) {
   const offerpath = block.querySelector(':scope div:nth-child(1) > div a').innerHTML.trim();
   let variationEl = block.querySelector(':scope div:nth-child(2) > div');
   variationEl = variationEl.firstChild ?? variationEl;
-  const variationname = variationEl.innerHTML.trim();
+  const variationname = variationEl.innerHTML.trim().toLowerCase();
 
   const url = window.location && window.location.origin && window.location.origin.includes('author')
     ? `${aemauthorurl}${persistedquery};path=${offerpath};variation=${variationname};ts=${Math.random() * 1000}`
