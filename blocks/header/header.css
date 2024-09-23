@@ -159,6 +159,10 @@ header nav .nav-brand img {
   max-height: 100%;
 }
 
+header .nav-brand p {
+  height: var(--nav-height);
+}
+
 header .nav-brand div {
   height: var(--nav-height);
 }
