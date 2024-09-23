@@ -39,10 +39,6 @@
     object-fit: contain;
 }
 
-.section > .feed-wrapper .feed.block .feed-list li .feed-item .description {
-    min-height: 28px;
-}
-
 .section > .feed-wrapper .feed.block .feed-list li .feed-item .custom {
     border-top: solid;
     text-align: center;
