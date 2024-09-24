@@ -17,7 +17,7 @@ export default async function decorate(block) {
   roleFolderPairs[firstRole] = firstFolder;
   roleFolderPairs[secondRole] = secondFolder;
 
-  const usersReq = await fetch (`https://publish-p130746-e1298459.adobeaemcloud.com/login.json`);
+  const usersReq = await fetch (`/login.json`);
   const users = usersReq.json();
 
   async function generateFeed(user) {
