@@ -20,7 +20,10 @@ export default async function decorate(block) {
   const usersReq = await fetch (`/login.json`);
   const usersJson = usersReq.json();
   const users = usersJson.data.map(item => {
-    return { username: item.username, role: item.role };
+    let userJson = {};
+    
+    userJson[item.username] = item.role;
+    return userJson;
   });
 
   async function generateFeed(user) {
