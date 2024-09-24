@@ -1,6 +1,9 @@
 export default async function decorate(block) {
+  const props = [...block.children];
+  const currency = props[0].textContent.trim();
+
   const container = document.createElement('table');
-  const url = 'https://20092-securbankdemo-stage.adobeio-static.net/api/v1/web/dx-excshell-1/forex?baseCurrency=CAD';
+  const url = `https://20092-securbankdemo-stage.adobeio-static.net/api/v1/web/dx-excshell-1/forex?baseCurrency=${currency}`;
   const options = {};
   const forexReq = await fetch(url, options);
   const index = await forexReq.json();
