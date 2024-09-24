@@ -18,7 +18,10 @@ export default async function decorate(block) {
   roleFolderPairs[secondRole] = secondFolder;
 
   const usersReq = await fetch (`/login.json`);
-  const users = usersReq.json();
+  const usersJson = usersReq.json();
+  const users = usersJson.data.map(item => {
+    return { username: item.username, role: item.role };
+  });
 
   async function generateFeed(user) {
     let folder = anonFolder;
