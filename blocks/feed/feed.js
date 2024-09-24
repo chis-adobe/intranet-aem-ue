@@ -1,10 +1,10 @@
 /* eslint-disable no-underscore-dangle */
 export default async function decorate(block) {
-  const users = {
+  /* const users = {
     'kchau@adobe.com': 'finance',
     'chis@adobe.com': 'tech',
     'asmith@wknd.com': 'finance',
-  };
+  }; */
 
   const props = [...block.children];
   const roleFolderPairs = {};
@@ -16,6 +16,9 @@ export default async function decorate(block) {
 
   roleFolderPairs[firstRole] = firstFolder;
   roleFolderPairs[secondRole] = secondFolder;
+
+  const usersReq = await fetch (`https://publish-p130746-e1298459.adobeaemcloud.com/login.json`);
+  const users = usersReq.json();
 
   async function generateFeed(user) {
     let folder = anonFolder;
