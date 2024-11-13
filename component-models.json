@@ -418,5 +418,24 @@
         ]
       }
     ]
+  },
+  {
+    "id": "ctc-teaser",
+    "fields": [
+      {
+        "component": "aem-content-fragment",
+        "name": "teaserpath",
+        "value": "",
+        "label": "Teaser Content Fragment path",
+        "valueType": "string"
+      },
+      {
+        "component": "text-input",
+        "name": "variation",
+        "value": "",
+        "label": "Variation",
+        "valueType": "string"
+      }
+    ]
   }
 ]
