@@ -5,11 +5,12 @@ export default async function decorate(block) {
   const aempublishurl = getEnvUrls().publish;
   const aemauthorurl = getEnvUrls().author;
   const persistedquery = '/graphql/execute.json/securbank/ctcTeaserList';
+  const teaserpath = block.querySelector(':scope div:nth-child(1) > div a').innerHTML.trim();
   const variationname = block.querySelector(':scope div:nth-child(2) > div').innerHTML.trim();
 
   const url = window.location && window.location.origin && window.location.origin.includes('author')
-    ? `${aemauthorurl}${persistedquery};variation=${variationname};ts=${Math.random() * 1000}`
-    : `${aempublishurl}${persistedquery};variation=${variationname};ts=${Math.random() * 1000}`;
+  ? `${aemauthorurl}${persistedquery};path=${teaserpath};variation=${variationname};ts=${Math.random() * 1000}`
+  : `${aempublishurl}${persistedquery};path=${teaserpath};variation=${variationname};ts=${Math.random() * 1000}`;
   const options = { credentials: 'include' };
 
   const cfReq = await fetch(url, options)
@@ -22,7 +23,7 @@ export default async function decorate(block) {
       return offer;
     });
 
-  const itemId = `urn:aemconnection:${offerpath}/jcr:content/data/master`;
+  const itemId = `urn:aemconnection:${teaserpath}/jcr:content/data/master`;
 
   block.innerHTML = `
   <div class='banner-content' data-aue-resource=${itemId} data-aue-label="offer content fragment" data-aue-type="reference" data-aue-filter="cf">
